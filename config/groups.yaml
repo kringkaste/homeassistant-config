@@ -1,0 +1,10 @@
+christmas:
+  name: Weihnachtsbeleuchtung
+  view: true
+  icon: mdi:pine-tree
+  entities:
+    - switch.steckdose_3
+    - switch.steckdose_4
+    - switch.steckdose_5
+    - switch.steckdose_6
+    - switch.steckdose_7

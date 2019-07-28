@@ -1,0 +1,17 @@
+version: "3"
+services:
+  hassio:
+    image: homeassistant/home-assistant
+    container_name: hassio
+    environment: 
+      - TZ=Europe/Berlin
+    volumes:
+      - ~/hassio/config:/config
+    expose: 
+      - "8123"
+      - "1883"
+      - "23272/udp"
+    ports:
+      - "8123:8123"
+      - "1883:1883"
+      - "23272:23272/udp"

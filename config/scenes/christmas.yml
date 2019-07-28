@@ -1,0 +1,4 @@
+name: Christmas Lights
+entities:
+  switch.socket3:
+    state: on

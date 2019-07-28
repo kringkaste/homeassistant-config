@@ -1,0 +1,95 @@
+- alias: "Weihnachtsbeleuchtung einschalten"
+  trigger:
+    event: sunset
+    platform: sun
+  condition: []
+  action:
+    data:
+      entity_id: group.christmas
+    service: switch.turn_on
+
+- alias: "Weihnachtsbeleuchtung ausschalten"
+  trigger:
+    at: '01:00:00'
+    platform: time
+  condition: []
+  action:
+    data:
+      entity_id: group.christmas
+    service: switch.turn_off
+
+- alias: "Anwesenheitsbeleuchtung einschalten"
+  trigger:
+    event: sunset
+    platform: sun
+  condition: []
+  action:
+    data:
+      entity_id: switch.steckdose_4
+    service: switch.turn_on
+
+- alias: "Anwesenheitsbeleuchtung ausschalten"
+  trigger:
+    at: '01:00:00'
+    platform: time
+  condition: []
+  action:
+    data:
+      entity_id: switch.steckdose_4
+    service: switch.turn_off
+
+- alias: "Bewässerung Balkon starten"
+  trigger:
+    platform: time_pattern
+    hours: "/1"
+    minutes: "5"
+  condition:
+    condition: or
+    conditions: 
+      - condition: time
+        after: '07:00:00'
+        before: '09:00:00'
+      - condition: time
+        after: '19:00:00'
+        before: '21:00:00'
+  action:
+    data:
+      entity_id: switch.steckdose_5
+    service: switch.turn_on
+
+- alias: "Bewässerung Balkon beenden"
+  trigger:
+    platform: time_pattern
+    hours: "/1"
+    minutes: "6"
+  condition:
+      - condition: time
+        after: '07:00:00'
+        before: '09:00:00'
+      - condition: time
+        after: '19:00:00'
+        before: '21:00:00'
+  action:
+    data:
+      entity_id: switch.steckdose_5
+    service: switch.turn_off
+
+- alias: "Enable MQTT discovery for all devices"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoffs/SetOption19"
+        payload: "1"
+
+- alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "sonoffs/cmnd/state"
+        payload: "" 
