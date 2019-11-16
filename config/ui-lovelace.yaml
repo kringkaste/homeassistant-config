@@ -1,0 +1,128 @@
+title: Smultronstaelle
+
+views:
+  - title: Home
+    icon: mdi:home
+    path: default_view
+    cards:
+      - title: Temperaturen Wohnraum
+        type: glance
+        show_icon: true
+        show_name: true
+        show_state": true
+        columns: 3
+        entities:
+          - entity: sensor.livingroom_current_temperature
+            name: Wohnenzimmer
+          - entity: sensor.heiko_current_temperature
+            name: Heiko
+          - entity: sensor.tom_current_temperature
+            name: Tom
+          - entity: sensor.sleepingroom_current_temperature
+            name: Schlafzimmer
+          - entity: sensor.grand_bath_current_temperature
+            name: gr. Bad
+          - entity: sensor.small_bath_current_temperature
+            name: kl. Bad
+      - title: Licht
+        type: entities
+        show_header_toggle: false
+        entities:
+          - entity: switch.steckdose_3
+            name: Sofa
+          - entity: switch.steckdose_4
+            name: Küchenfenster
+      - name: Außentemperatur
+        type: sensor
+        entity: sensor.wetter_temperature
+        graph: line
+        detail: 2
+        unit: °C
+  - title: Internet
+    icon: mdi:lan-connect
+    path: internet
+    cards:
+      - title: Internet-Zugang
+        type: horizontal-stack
+        cards:
+          - type: glance
+            show_name: false
+            show_icon: true
+            show_state: true
+            entities:
+              - entity: binary_sensor.internet
+                icon: mdi:lan-connect
+                show_last_changed: true
+          - type: history-graph
+            hours_to_show: 24
+            entities:
+              - sensor.internet_rtt
+  - title: Heizung
+    icon: mdi:fire
+    path: heizung
+    cards:
+      - name: Wohnen Nord
+        entity: climate.wohnzimmer_thermostat_nord
+        type: thermostat
+      - name: Wohnen Ost
+        entity: climate.wohnzimmer_thermostat_ost
+        type: thermostat
+      - name: Wohnen Süd
+        entity: climate.wohnzimmer_thermostat_sud
+        type: thermostat
+      - name: Heiko
+        entity: climate.heiko_thermostat
+        type: thermostat
+      - name: Tom
+        entity: climate.tom_thermostat
+        type: thermostat
+      - name: Schlafzimmer
+        entity: climate.schlafzimmer_thermostat_1
+        type: thermostat
+      - name: großes Bad
+        entity: climate.grosses_bad_thermostat
+        type: thermostat
+      - name: kleines Bad
+        entity: climate.kleines_bad_thermostat
+        type: thermostat
+  - title: Weihnachtsbeleuchtung
+    icon: mdi:pine-tree
+    path: christmas
+    cards:
+      - type: entity-button
+        entity: group.christmas
+        show_icon: true
+        show_name: true
+        tap_action:
+          action: call-service
+          service: switch.toggle
+          service_data:
+            entity_id: group.christmas
+  - title: Automatisierungen
+    icon: mdi:settings-outline
+    path: automation
+    cards:
+      - title: Beleuchtung
+        show_header_toggle: true
+        type: entities
+        entities: 
+          - entity: automation.anwesenheitsbeleuchtung_einschalten
+          - entity: automation.anwesenheitsbeleuchtung_ausschalten
+      - title: Bewässerung
+        show_header_toggle: true
+        type: entities
+        entities: 
+          - entity: automation.bewasserung_balkon_starten
+          - entity: automation.bewasserung_balkon_beenden
+      - title: Weihnachtsbeleuchtung
+        show_header_toggle: true
+        type: entities
+        entities: 
+          - entity: automation.weihnachtsbeleuchtung_einschalten
+          - entity: automation.weihnachtsbeleuchtung_ausschalten
+      - title: Home Assistant
+        show_header_toggle: false
+        type: entities
+        entities: 
+          - entity: automation.enable_mqtt_discovery_for_all_devices
+          - entity: automation.power_state_on_ha_start_up

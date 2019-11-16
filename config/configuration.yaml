@@ -39,7 +39,7 @@ updater:
 discovery:
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+# conversation:
 
 # Enables support for tracking state changes over time
 history:
@@ -48,10 +48,14 @@ history:
 logbook:
 
 # Enables a map showing the location of tracked devices
-map:
+# map:
 
 # Track the sun
 sun:
+
+# Load UI config from yaml
+lovelace:
+  mode: yaml
 
 # Sensors
 sensor:
@@ -63,6 +67,46 @@ sensor:
       - temperature
       - symbol
       - cloudiness
+  # Temerature from Thermostat
+  - platform: template
+    sensors:
+      livingroom_current_temperature:
+        friendly_name: Temperatur Wohnzimmer
+        value_template: "{{ state_attr('climate.wohnzimmer_thermostat_ost', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      sleepingroom_current_temperature:
+        friendly_name: Temperatur Schlafzimmer
+        value_template: "{{ state_attr('climate.schlafzimmer_thermostat_1', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      heiko_current_temperature:
+        friendly_name: Temperatur Heikos Zimmer
+        value_template: "{{ state_attr('climate.heiko_thermostat', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      tom_current_temperature:
+        friendly_name: Temperatur Toms Zimmer
+        value_template: "{{ state_attr('climate.tom_thermostat', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      small_bath_current_temperature:
+        friendly_name: Temperatur kleines Bad
+        value_template: "{{ state_attr('climate.kleines_bad_thermostat', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      grand_bath_current_temperature:
+        friendly_name: Temperatur großes Bad
+        value_template: "{{ state_attr('climate.grosses_bad_thermostat', 'current_temperature') }}"
+        unit_of_measurement: "°C"
+      internet_rtt:
+        friendly_name: Internet RTT (Cloudflare)
+        value_template: "{{ state_attr('states.binary_sensor.internet', 'round_trip_time_avg') }}"
+        unit_of_measurement: ms
+
+# Binary sensors
+binary_sensor:
+  - platform: ping
+    host: 1.1.1.1
+    count: 2
+    scan_interval:
+      seconds: 60
+    name: Internet
 
 # Text to speech
 tts:
