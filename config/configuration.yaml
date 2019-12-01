@@ -13,6 +13,9 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+# mobile app
+mobile_app:
+
 # health check
 system_health:
 
