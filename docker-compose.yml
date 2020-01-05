@@ -1,17 +1,27 @@
 version: "3"
 services:
-  hassio:
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    volumes:
+      - ~/hassio/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ~/hassio/config/mosquitto.user:/mosquitto/config/mosquitto.user
+    expose: 
+      - "1883"
+    ports:
+      - "1883:1883"
+  ha:
+    depends_on: 
+      - mqtt
     image: homeassistant/home-assistant
-    container_name: hassio
+    container_name: ha
     environment: 
       - TZ=Europe/Berlin
     volumes:
       - ~/hassio/config:/config
     expose: 
       - "8123"
-      - "1883"
       - "23272/udp"
     ports:
       - "8123:8123"
-      - "1883:1883"
       - "23272:23272/udp"

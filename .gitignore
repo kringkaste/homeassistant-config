@@ -6,6 +6,7 @@
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
+mosquitto.user
 known_devices.yaml
 /config/.HA_VERSION
 /config/.uuid

@@ -121,6 +121,9 @@ cloud:
 
 # MQTT
 mqtt:
+  broker: mqtt
+  client_id: homeassistant
+  username: homeassistant
   password: !secret mqtt_password
   discovery: true
 
