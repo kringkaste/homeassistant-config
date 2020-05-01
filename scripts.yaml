@@ -1,12 +1,10 @@
-'1588360858014':
+bewaesserung:
   alias: Bewässerung
   sequence:
-  - device_id: 3c34ebbf6fe241e2be692f1e91929b0c
-    domain: switch
-    entity_id: switch.steckdose_3
-    type: turn_on
-  - delay: 00:01:00
-  - device_id: 3c34ebbf6fe241e2be692f1e91929b0c
-    domain: switch
-    entity_id: switch.steckdose_3
-    type: turn_off
+    - service: switch.turn_on
+      data:
+        entity_id: switch.steckdose_3
+    - delay: 00:01:00
+    - service: switch.turn_off
+      data:
+        entity_id: switch.steckdose_3

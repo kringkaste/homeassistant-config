@@ -5,7 +5,7 @@ views:
     icon: mdi:home
     path: default_view
     cards:
-      - type: button
+      - type: entity-button
         tap_action:
           action: toggle
         hold_action:
@@ -15,7 +15,7 @@ views:
         entity: switch.steckdose_1
         icon: 'mdi:lamp'
         icon_height: 64px
-      - type: button
+      - type: entity-button
         tap_action:
           action: toggle
         hold_action:

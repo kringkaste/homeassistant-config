@@ -1,33 +1,24 @@
-- id: '1588347072640'
-  alias: Anwesenheitsbeleuchtung einschalten
+- alias: Anwesenheitsbeleuchtung einschalten
   description: ''
   trigger:
   - event: sunset
     platform: sun
   condition: []
   action:
-  - device_id: e32a42ed28874a8285c870923f3a42c8
-    domain: switch
-    entity_id: switch.steckdose_1
-    type: turn_on
-  - data:
-      message: Die Sonne ist untergegangen :(
-      title: Sonnenuntergang
-    service: notify.notify
-- id: '1588347182916'
-  alias: Anwesenheitsbeleuchtung ausschalten
+    - entity_id: switch.steckdose_1
+      service: switch.turn_on
+
+- alias: Anwesenheitsbeleuchtung ausschalten
   description: ''
   trigger:
   - at: 01:00
     platform: time
   condition: []
   action:
-  - device_id: e32a42ed28874a8285c870923f3a42c8
-    domain: switch
-    entity_id: switch.steckdose_1
-    type: turn_off
-- id: '1588353136401'
-  alias: Bewässerung Balkon
+    - entity_id: switch.steckdose_1
+      service: switch.turn_off
+
+- alias: Bewässerung Balkon
   description: ''
   trigger:
   - hours: /1
@@ -44,10 +35,10 @@
       condition: time
   action:
   - data: {}
-    entity_id: script.1588360858014
+    entity_id: script.bewaesserung
     service: script.turn_on
-- id: '1588354019225'
-  alias: Weihnachtsbeleuchtung einschalten
+
+- alias: Weihnachtsbeleuchtung einschalten
   description: ''
   trigger:
   - event: sunset
@@ -56,8 +47,8 @@
   action:
   - entity_id: group.christmas
     service: switch.turn_on
-- id: '1588354112213'
-  alias: Weihnachtsbeleuchtung ausschalten
+
+- alias: Weihnachtsbeleuchtung ausschalten
   description: ''
   trigger:
   - at: 01:00:00
@@ -66,3 +57,23 @@
   action:
   - entity_id: group.christmas
     service: switch.turn_off
+
+- alias: "MQTT discovery for all devices"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "sonoffs/cmnd/SetOption19"
+        payload: "1"
+
+- alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "sonoffs/cmnd/state"
+        payload: "" 
