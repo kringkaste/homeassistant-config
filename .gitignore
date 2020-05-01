@@ -2,13 +2,16 @@
 .storage
 .cloud
 .google.token
+deps
+tts
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 mosquitto.user
 known_devices.yaml
-/config/.HA_VERSION
-/config/.uuid
-/config/home-assistant_v2.db
-/config/home-assistant.log
+.HA_VERSION
+.uuid
+home-assistant_v2.db
+home-assistant.log
+mqtt_dump.log

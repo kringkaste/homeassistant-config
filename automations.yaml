@@ -1,0 +1,68 @@
+- id: '1588347072640'
+  alias: Anwesenheitsbeleuchtung einschalten
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - device_id: e32a42ed28874a8285c870923f3a42c8
+    domain: switch
+    entity_id: switch.steckdose_1
+    type: turn_on
+  - data:
+      message: Die Sonne ist untergegangen :(
+      title: Sonnenuntergang
+    service: notify.notify
+- id: '1588347182916'
+  alias: Anwesenheitsbeleuchtung ausschalten
+  description: ''
+  trigger:
+  - at: 01:00
+    platform: time
+  condition: []
+  action:
+  - device_id: e32a42ed28874a8285c870923f3a42c8
+    domain: switch
+    entity_id: switch.steckdose_1
+    type: turn_off
+- id: '1588353136401'
+  alias: Bewässerung Balkon
+  description: ''
+  trigger:
+  - hours: /1
+    minutes: '5'
+    platform: time_pattern
+  condition:
+  - condition: or
+    conditions:
+    - after: 07:00:00
+      before: 09:00:00
+      condition: time
+    - after: '19:00:00'
+      before: '21:00:00'
+      condition: time
+  action:
+  - data: {}
+    entity_id: script.1588360858014
+    service: script.turn_on
+- id: '1588354019225'
+  alias: Weihnachtsbeleuchtung einschalten
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - entity_id: group.christmas
+    service: switch.turn_on
+- id: '1588354112213'
+  alias: Weihnachtsbeleuchtung ausschalten
+  description: ''
+  trigger:
+  - at: 01:00:00
+    platform: time
+  condition: []
+  action:
+  - entity_id: group.christmas
+    service: switch.turn_off

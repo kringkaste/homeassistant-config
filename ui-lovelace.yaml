@@ -5,58 +5,26 @@ views:
     icon: mdi:home
     path: default_view
     cards:
-      - title: Temperaturen Wohnraum
-        type: glance
+      - type: button
+        tap_action:
+          action: toggle
+        hold_action:
+          action: none
         show_icon: true
         show_name: true
-        show_state": true
-        columns: 3
-        entities:
-          - entity: sensor.livingroom_current_temperature
-            name: Wohnenzimmer
-          - entity: sensor.heiko_current_temperature
-            name: Heiko
-          - entity: sensor.tom_current_temperature
-            name: Tom
-          - entity: sensor.sleepingroom_current_temperature
-            name: Schlafzimmer
-          - entity: sensor.grand_bath_current_temperature
-            name: gr. Bad
-          - entity: sensor.small_bath_current_temperature
-            name: kl. Bad
-      - title: Licht
-        type: entities
-        show_header_toggle: false
-        entities:
-          - entity: switch.steckdose_3
-            name: Sofa
-          - entity: switch.steckdose_4
-            name: Küchenfenster
-      - name: Außentemperatur
-        type: sensor
-        entity: sensor.wetter_temperature
-        graph: line
-        detail: 2
-        unit: °C
-  - title: Internet
-    icon: mdi:lan-connect
-    path: internet
-    cards:
-      - title: Internet-Zugang
-        type: horizontal-stack
-        cards:
-          - type: glance
-            show_name: false
-            show_icon: true
-            show_state: true
-            entities:
-              - entity: binary_sensor.internet
-                icon: mdi:lan-connect
-                show_last_changed: true
-          - type: history-graph
-            hours_to_show: 24
-            entities:
-              - sensor.internet_rtt
+        entity: switch.steckdose_1
+        icon: 'mdi:lamp'
+        icon_height: 64px
+      - type: button
+        tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        show_icon: true
+        show_name: true
+        entity: switch.steckdose_2
+        icon: 'mdi:floor-lamp'
+        icon_height: 64px
   - title: Heizung
     icon: mdi:fire
     path: heizung
@@ -113,16 +81,9 @@ views:
         type: entities
         entities: 
           - entity: automation.bewasserung_balkon_starten
-          - entity: automation.bewasserung_balkon_beenden
       - title: Weihnachtsbeleuchtung
         show_header_toggle: true
         type: entities
         entities: 
           - entity: automation.weihnachtsbeleuchtung_einschalten
           - entity: automation.weihnachtsbeleuchtung_ausschalten
-      - title: Home Assistant
-        show_header_toggle: false
-        type: entities
-        entities: 
-          - entity: automation.enable_mqtt_discovery_for_all_devices
-          - entity: automation.power_state_on_ha_start_up
