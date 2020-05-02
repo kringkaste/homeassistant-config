@@ -82,7 +82,7 @@ views:
         show_header_toggle: true
         type: entities
         entities: 
-          - entity: automation.bewasserung_balkon_starten
+          - entity: automation.bewasserung_balkon
       - title: Weihnachtsbeleuchtung
         show_header_toggle: true
         type: entities
