@@ -4,7 +4,7 @@
 
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Home
+  name: Smultronstaelle
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_latitude
   longitude: !secret home_longitude
@@ -56,7 +56,7 @@ discovery:
 history:
 
 # View all events in a logbook
-logbook:
+# logbook:
 
 # Enables a map showing the location of tracked devices
 # map:

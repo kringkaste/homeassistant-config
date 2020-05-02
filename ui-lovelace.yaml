@@ -6,6 +6,7 @@ views:
     path: default_view
     cards:
       - type: entity-button
+        name: Küchenfenster
         tap_action:
           action: toggle
         hold_action:
@@ -16,6 +17,7 @@ views:
         icon: 'mdi:lamp'
         icon_height: 64px
       - type: entity-button
+        name: Stehlampe
         tap_action:
           action: toggle
         hold_action:
