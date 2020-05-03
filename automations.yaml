@@ -76,4 +76,17 @@
     - service: mqtt.publish
       data:
         topic: "sonoffs/cmnd/state"
-        payload: "" 
+        payload: ""
+
+- alias: Update from Repository
+  description: ''
+  trigger:
+    platform: webhook
+    webhook_id: update
+  action:
+    - service: shell_command.update_from_git
+    - service: homeassistant.reload_core_config
+    - service: script.reload
+    - service: lovelace.reload_resources
+    - service: automation.reload
+    - service: group.reload
