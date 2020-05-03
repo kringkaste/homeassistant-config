@@ -31,8 +31,13 @@ views:
     icon: mdi:flower
     path: balcony
     cards:
+      - type: markdown
+        content: >-
+          Die automatische Bewässerung läuft jeden Tag für jeweils eine Minute um **7:05
+          Uhr** und **8:05 Uhr**, sowie **19:05 Uhr** und **20:05 Uhr**.
+        title: Automatische Bewässerung
       - type: entity-button
-        name: Bewässerung für 1 Minute
+        name: Bewässerung für 1 Minute starten
         tap_action:
           action: toggle
         hold_action:
