@@ -82,4 +82,4 @@ lovelace:
   mode: yaml
 
 shell_command:
-  update_from_git: 'cd /root/config; git pull'
+  update_from_git: 'cd /root/config; /usr/bin/git pull'
