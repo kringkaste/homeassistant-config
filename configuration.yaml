@@ -73,6 +73,7 @@ automation: !include automations.yaml
 automation old: !include static_automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+zone: !include zones.yaml
 
 maxcube:
   gateways:
