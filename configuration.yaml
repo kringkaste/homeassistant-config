@@ -80,3 +80,6 @@ maxcube:
 
 lovelace:
   mode: yaml
+
+shell_command:
+  update_from_git: 'cd /root/config; git pull'
