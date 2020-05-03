@@ -27,6 +27,21 @@ views:
         entity: switch.steckdose_2
         icon: 'mdi:floor-lamp'
         icon_height: 64px
+  - title: Balkon
+    icon: mdi:flower
+    path: default_view
+    cards:
+      - type: entity-button
+        name: Bewässerung für 1 Minute
+        tap_action:
+          action: toggle
+        hold_action:
+          action: none
+        show_icon: true
+        show_name: true
+        entity: script.bewaesserung
+        icon: 'mdi:water-pump'
+        icon_height: 64px
   - title: Heizung
     icon: mdi:fire
     path: heizung
