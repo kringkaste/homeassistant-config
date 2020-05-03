@@ -29,7 +29,7 @@ views:
         icon_height: 64px
   - title: Balkon
     icon: mdi:flower
-    path: default_view
+    path: balcony
     cards:
       - type: entity-button
         name: Bewässerung für 1 Minute
