@@ -21,7 +21,13 @@
 - alias: Bewässerung Balkon
   description: ''
   trigger:
-  - hours: '8,13,18'
+  - hours: '8'
+    minutes: '5'
+    platform: time_pattern
+  - hours: '13'
+    minutes: '5'
+    platform: time_pattern
+  - hours: '18'
     minutes: '5'
     platform: time_pattern
   action:
