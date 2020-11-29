@@ -69,6 +69,10 @@
     data:
       entity_id: input_select.state_washingmachine
       option: 'Idle'
+  - service: notify.mobile_app_franquins_iphone
+    data:
+      title: 'Waschmaschine ist fertig'
+      message: 'Die Waschmaschine ist fertig, bitte leeren.'
 
 - alias: Washingmachine is running
   description: ''
