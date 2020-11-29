@@ -63,6 +63,7 @@
     above: 0.02
     below: 0.1
     for: '00:02:00'
+  condition: []
   action:
   - service: input_select.select_option
     data:
@@ -76,6 +77,7 @@
     entity_id: sensor.waschmaschine_energy_current
     above: 0.5
     for: '00:02:00'
+  condition: []
   action:
   - service: input_select.select_option
     data:
@@ -89,6 +91,7 @@
     entity_id: sensor.waschmaschine_energy_current
     below: 0.01
     for: '00:02:00'
+  condition: []
   action:
   - service: input_select.select_option
     data:
