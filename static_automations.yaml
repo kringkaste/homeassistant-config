@@ -55,6 +55,46 @@
   - entity_id: group.christmas
     service: switch.turn_off
 
+- alias: Washingmachine is idle
+  description: ''
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.waschmaschine_energy_current
+      above: 0.02
+      below: 0.1
+      for: '00:02:00'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_washingmachine
+        option: 'Idle'
+
+- alias: Washingmachine is running
+  description: ''
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.waschmaschine_energy_current
+      above: 0.5
+      for: '00:02:00'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_washingmachine
+        option: 'Running'
+
+- alias: Washingmachine is off
+  description: ''
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.waschmaschine_energy_current
+      below: 0.01
+      for: '00:02:00'
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.state_washingmachine
+        option: 'Off'
+            
 - alias: "MQTT discovery for all devices"
   trigger:
     platform: homeassistant

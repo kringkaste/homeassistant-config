@@ -87,3 +87,12 @@ lovelace:
 
 shell_command:
   update_from_git: 'cd /root/config; /usr/bin/git pull'
+
+input_select:
+  state_washingmachine:
+    name: Status Waschmaschine
+    options:
+      - "Off"
+      - "Idle"
+      - "Running"
+      icon: mdi:tumble-dryer
