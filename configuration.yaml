@@ -95,4 +95,4 @@ input_select:
       - "Off"
       - "Idle"
       - "Running"
-      icon: mdi:tumble-dryer
+    icon: mdi:tumble-dryer
