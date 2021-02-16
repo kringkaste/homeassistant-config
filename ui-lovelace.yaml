@@ -27,17 +27,14 @@ views:
         entity: switch.steckdose_2
         icon: 'mdi:floor-lamp'
         icon_height: 64px
-      - type: entity-button
+      - type: light
         name: Sekretär
         tap_action:
           action: toggle
         hold_action:
           action: none
-        show_icon: true
-        show_name: true
         entity: light.sekretar
         icon: 'mdi:led-strip'
-        icon_height: 64px
   - title: Balkon
     icon: mdi:flower
     path: balcony
