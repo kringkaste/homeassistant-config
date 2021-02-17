@@ -5,7 +5,7 @@ views:
     icon: mdi:home
     path: default_view
     cards:
-      - type: entity-button
+      - type: button
         name: Küchenfenster
         tap_action:
           action: toggle
@@ -16,7 +16,7 @@ views:
         entity: switch.steckdose_1
         icon: 'mdi:lamp'
         icon_height: 64px
-      - type: entity-button
+      - type: button
         name: Stehlampe
         tap_action:
           action: toggle
@@ -43,7 +43,7 @@ views:
         content: >-
           Die automatische Bewässerung läuft jeden Tag für jeweils eine Minute um **8:05 Uhr**, **13:05 Uhr** und **18:05 Uhr**.
         title: Automatische Bewässerung
-      - type: entity-button
+      - type: button
         name: Bewässerung für 1 Minute starten
         tap_action:
           action: toggle
@@ -86,7 +86,7 @@ views:
     icon: mdi:pine-tree
     path: christmas
     cards:
-      - type: entity-button
+      - type: button
         entity: group.christmas
         show_icon: true
         show_name: true
