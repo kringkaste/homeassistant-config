@@ -62,7 +62,7 @@
     entity_id: sensor.waschmaschine_energy_current
     above: 0.02
     below: 0.1
-    for: '00:02:00'
+    for: '00:15:00'
   condition: []
   action:
   - service: input_select.select_option
